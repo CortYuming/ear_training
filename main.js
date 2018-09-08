@@ -24,6 +24,7 @@ async function main() {
   //Tone.Transport.bpm.value = 240/2;
   const synth = new Tone.Synth().toMaster();
 
+  const url = location.href.split('?')[0] || '/';
   const note = get_parameter('note');
   const NOTES = [
     'E2', 'F2', 'Gb2', 'G2', 'Ab2', 'A2', 'Bb2', 'B2',
@@ -35,10 +36,10 @@ async function main() {
   document.getElementById('series_of_notes').innerHTML= NOTES.join(', ');
 
   function make_sound() {
-    window.location.href = `/?note=${random(NOTES)}`;
+    window.location.href = `${url}?note=${random(NOTES)}`;
   }
   function stop_sound() {
-    window.location.href = '/';
+    window.location.href = `${url}`;
   }
 
   document.getElementById('make_sound').addEventListener('click', make_sound.bind(this));
