@@ -24,6 +24,7 @@ async function main() {
   //Tone.Transport.bpm.value = 240/2;
   const synth = new Tone.Synth().toMaster();
 
+  const note = get_parameter('note');
   const NOTES = [
     'E2', 'F2', 'Gb2', 'G2', 'Ab2', 'A2', 'Bb2', 'B2',
     'C3', 'Db3', 'D3', 'Eb3', 'E3', 'F3', 'Gb3', 'G3', 'Ab3', 'A3', 'Bb3', 'B3',
@@ -31,7 +32,7 @@ async function main() {
     'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4',
     // 'C5', 'Db5', 'D5', 'Eb5',
   ];
-  const note = get_parameter('note');
+  document.getElementById('series_of_notes').innerHTML= NOTES.join(', ');
 
   function make_sound() {
     window.location.href = `/?note=${random(NOTES)}`;
