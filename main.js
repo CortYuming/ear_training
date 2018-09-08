@@ -21,7 +21,6 @@ function sleep(milliseconds) {
 }
 
 async function main() {
-  //Tone.Transport.bpm.value = 240/2;
   const synth = new Tone.Synth().toMaster();
 
   const url = location.href.split('?')[0] || '/';
@@ -33,7 +32,6 @@ async function main() {
     'E4', 'F4', 'Gb4', 'G4', 'Ab4', 'A4', 'Bb4', 'B4',
     // 'C5', 'Db5', 'D5', 'Eb5',
   ];
-  document.getElementById('series_of_notes').innerHTML= NOTES.join(', ');
 
   function play_sound() {
     window.location.href = `${url}?note=${random(NOTES)}`;
@@ -44,6 +42,7 @@ async function main() {
 
   document.getElementById('play_sound').addEventListener('click', play_sound.bind(this));
   document.getElementById('stop_sound').addEventListener('click', stop_sound.bind(this));
+  document.getElementById('series_of_notes').innerHTML= NOTES.join(', ');
 
   if (!NOTES.includes(note)) {
     return;
@@ -55,7 +54,7 @@ async function main() {
   [...Array(repeat_count).keys()].forEach((i) => {
     synth.triggerAttackRelease(note, duration, interval_sec * i);
   });
-  document.getElementById('note').innerHTML= note.replace(/\d+?$/, '') ;
+  document.getElementById('note').innerHTML= note.replace(/\d+?$/, '');
 
   await sleep(interval_sec * repeat_count * 1000);
 
