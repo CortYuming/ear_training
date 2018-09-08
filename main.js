@@ -35,14 +35,14 @@ async function main() {
   ];
   document.getElementById('series_of_notes').innerHTML= NOTES.join(', ');
 
-  function make_sound() {
+  function play_sound() {
     window.location.href = `${url}?note=${random(NOTES)}`;
   }
   function stop_sound() {
     window.location.href = `${url}`;
   }
 
-  document.getElementById('make_sound').addEventListener('click', make_sound.bind(this));
+  document.getElementById('play_sound').addEventListener('click', play_sound.bind(this));
   document.getElementById('stop_sound').addEventListener('click', stop_sound.bind(this));
 
   if (!NOTES.includes(note)) {
@@ -59,7 +59,7 @@ async function main() {
 
   await sleep(interval_sec * repeat_count * 1000);
 
-  make_sound();
+  play_sound();
 }
 
 window.onload = () => {
